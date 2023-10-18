@@ -8,11 +8,13 @@ import org.junit.runners.Parameterized;
 public class ParametrizedLionTest {
     private final String sex;
     boolean hasMane;
+    Feline feline;
 
 
-    public ParametrizedLionTest(String sex, boolean hasMane) {
+    public ParametrizedLionTest(String sex, boolean hasMane, Feline feline) {
         this.sex = sex;
         this.hasMane=hasMane;
+        this.feline=feline;
     }
 
     @Parameterized.Parameters
@@ -25,7 +27,7 @@ public class ParametrizedLionTest {
 
     @Test
     public void doesHaveName() throws Exception{
-        Lion lion = new Lion(sex);
+        Lion lion = new Lion(sex,feline);
         boolean actualResult=lion.doesHaveMane();
         assertEquals(hasMane, actualResult);
 

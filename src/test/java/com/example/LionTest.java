@@ -1,38 +1,34 @@
 package com.example;
 
-import static org.junit.Assert.*;
-import static org.junit.Assert.assertEquals;
-
-import org.hamcrest.MatcherAssert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.Spy;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import java.util.Collections;
 import java.util.List;
+
+import static org.junit.Assert.assertEquals;
 @RunWith(MockitoJUnitRunner.class)
 public class LionTest {
     @Mock
     Feline feline;
 
     @Test
-    public void checkCountOfKittens() {
+    public void checkCountOfKittens() throws Exception{
         Mockito.when(feline.getKittens()).thenReturn(1);
-        Lion lion = new Lion(feline);
+        Lion lion = new Lion("Самец",feline);
         int actualResult = lion.getKittens();
         int expectedResult = 1;
         assertEquals(expectedResult, actualResult);
 
     }
 
-    @Test(expected = Exception.class)
+    @Test
     public void invalidSexTest() throws Exception {
-        Lion lion = new Lion("Заяц");
+        Lion lion = new Lion("Заяц",feline);
         List<String> expectedResult = List.of("Животные", "Птицы", "Рыба");
-        assertEquals(expectedResult, Exception.class);
+        assertEquals(expectedResult, lion);
     }
 
 
