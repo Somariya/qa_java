@@ -1,8 +1,10 @@
 package com.example;
-import static org.junit.Assert.*;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+
+import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
 public class ParametrizedLionTest {
@@ -11,10 +13,9 @@ public class ParametrizedLionTest {
     Feline feline;
 
 
-    public ParametrizedLionTest(String sex, boolean hasMane, Feline feline) {
+    public ParametrizedLionTest(String sex, boolean hasMane) {
         this.sex = sex;
         this.hasMane=hasMane;
-        this.feline=feline;
     }
 
     @Parameterized.Parameters
